@@ -1,0 +1,1 @@
+This is the repo related to bar code scanning through Ionic
