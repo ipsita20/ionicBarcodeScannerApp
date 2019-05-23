@@ -1,5 +1,8 @@
 {
   "name": "ionicbarcodeApp",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "3187feda"
 }
