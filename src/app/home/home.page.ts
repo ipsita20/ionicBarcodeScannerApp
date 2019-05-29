@@ -35,7 +35,7 @@ export class HomePage {
 
     this.barcodeScanner.scan().then(barcodeData => {
       console.log('Barcode data', barcodeData);
-      this.barCode = barcodeData;
+      this.barCode = JSON.stringify(barcodeData);
      }).catch(err => {
          console.log('Error', err);
      });
@@ -48,7 +48,7 @@ export class HomePage {
         // start scanning
         const scanSub = this.qrScanner.scan().subscribe((qrCodeText: string) => {
           console.log('Scanned something', qrCodeText);
-          this.qrCode = qrCodeText;
+          this.qrCode = JSON.stringify(qrCodeText);
           this.qrScanner.hide(); // hide camera preview
           scanSub.unsubscribe(); // stop scanning
         });
