@@ -12,7 +12,7 @@ export class HomePage {
   }
   image: any = '';
   openCam(): void {
-    console.log('camera');
+   /* console.log('camera');
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
@@ -27,7 +27,14 @@ export class HomePage {
     }, (err) => {
      // Handle error
      alert('error ' + JSON.stringify(err));
-    });
+    }); */
+
+    this.barcodeScanner.scan().then(barcodeData => {
+      console.log('Barcode data', barcodeData);
+      this.image = barcodeData;
+     }).catch(err => {
+         console.log('Error', err);
+     });
 
   }
 }
