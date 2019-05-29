@@ -7,6 +7,9 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="openCam();" >Open camera !!</ion-button>
-  <img src="{{image}}">
+  <ion-button (click)="scanBarCode();">Scan BarCode</ion-button>
+  <p>{{barCode}}</p>
+
+  <ion-button (click)="scanQRCode();">Scan QRCode</ion-button>
+  <p>{{qrCode}}</p>
 </ion-content>
