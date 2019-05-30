@@ -42,19 +42,56 @@ export class HomePage {
   }
 
   scanQRCode(): void {
-    this.qrScanner.prepare().then((status: QRScannerStatus) => {
-      if (true) {
-        // camera permission was granted
-        // start scanning
-        const scanSub = this.qrScanner.scan().subscribe((qrCodeText: string) => {
-          console.log('Scanned something', qrCodeText);
-          this.qrCode = JSON.stringify(qrCodeText);
-          this.qrScanner.hide(); // hide camera preview
-          scanSub.unsubscribe(); // stop scanning
-        });
+    this.qrScanner.prepare()
+  .then((status: QRScannerStatus) => {
+    if (status.authorized) {
+      // camera permission was granted
+       alert('authorized');
+      // start scanning
+       const scanSub = this.qrScanner.scan().subscribe((text: string) => {
+        console.log('Scanned something', text);
+        alert(text);
+        this.qrScanner.hide(); // hide camera preview
+        scanSub.unsubscribe(); // stop scanning
+     //   this.navCtrl.pop();
+      });
+       this.startScanner();
+       this.qrScanner.resumePreview();
 
-      }
-   })
-   .catch((e: any) => console.log('Error is', e));
+      // show camera preview
+       this.qrScanner.show()
+      .then((data: QRScannerStatus) => {
+        console.log('datashowing', data.showing);
+        alert(data.showing);
+      }, err => {
+        alert(err);
+
+      });
+
+      // wait for user to scan something, then the observable callback will be called
+
+    } else if (status.denied) {
+      alert('denied');
+      // camera permission was permanently denied
+      // you must use QRScanner.openSettings() method to guide the user to the settings page
+      // then they can grant the permission from there
+    } else {
+      // permission was denied, but not permanently. You can ask for permission again at a later time.
+      alert('else');
+    }
+  })
+  .catch((e: any) => {
+    alert('Error is' + e);
+  });
   }
+
+  startScanner() {
+    const rootElement = <HTMLElement>document.getElementsByTagName('html')[0];
+            rootElement.classList.add('qr-scanner-open');
+  }
+
+  closeScanner() {
+    const rootElement = <HTMLElement>document.getElementsByTagName('html')[0];
+            rootElement.classList.remove('qr-scanner-open');
+}
 }

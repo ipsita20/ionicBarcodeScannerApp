@@ -13,4 +13,10 @@
 <ion-content>
   <ion-button (click)="scanQRCode();">Scan QRCode</ion-button>
   <p>{{qrCode}}</p>
+
+  <div id="close-scanner-button" text-center>
+    <ion-button (click)="closeScanner()" color="warning">
+        Close Scanner
+    </ion-button>
+</div>
 </ion-content>
