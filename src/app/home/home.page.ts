@@ -41,7 +41,7 @@ export class HomePage {
      });
   }
 
-  scanQRCode(): void {
+ /* scanQRCode(): void {
     this.qrScanner.prepare()
   .then((status: QRScannerStatus) => {
     if (status.authorized) {
@@ -93,5 +93,5 @@ export class HomePage {
   closeScanner() {
     const rootElement = <HTMLElement>document.getElementsByTagName('html')[0];
             rootElement.classList.remove('qr-scanner-open');
-}
+  } */
 }
