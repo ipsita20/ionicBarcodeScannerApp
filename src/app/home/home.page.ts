@@ -41,9 +41,11 @@ export class HomePage {
      });
   }
 
- /* scanQRCode(): void {
+  scanQRCode(): void {
+    alert('scan qr code');
     this.qrScanner.prepare()
   .then((status: QRScannerStatus) => {
+    alert('check status');
     if (status.authorized) {
       // camera permission was granted
        alert('authorized');
@@ -55,6 +57,7 @@ export class HomePage {
         scanSub.unsubscribe(); // stop scanning
      //   this.navCtrl.pop();
       });
+       alert('start scanner');
        this.startScanner();
        this.qrScanner.resumePreview();
 
@@ -93,5 +96,5 @@ export class HomePage {
   closeScanner() {
     const rootElement = <HTMLElement>document.getElementsByTagName('html')[0];
             rootElement.classList.remove('qr-scanner-open');
-  } */
+  }
 }
